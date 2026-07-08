@@ -1,1 +1,71 @@
+// sender sends "hi" ,receiver sends "hello" and asks "what do  you want". later if valid input operation is given by user then it will perform if not receiver sends "bye" message 
+import java.util.Scanner;
 
+public class ChatBot {
+
+   
+    static void sender() {
+        System.out.println("Sender: Hi");
+    }
+
+    
+    static void receiver() {
+        System.out.println("Receiver: Hello");
+        System.out.println("Receiver: What do you want?");
+       
+    }
+
+     static void operation(char op, int num1, int num2) {
+
+        switch (op) {
+            case '+':
+                System.out.println("Result = " + (num1 + num2));
+                break;
+
+            case '-':
+                System.out.println("Result = " + (num1 - num2));
+                break;
+
+            case '*':
+                System.out.println("Result = " + (num1 * num2));
+                break;
+
+            case '/':
+                if (num2 != 0)
+                    System.out.println("Result = " + (num1 / num2));
+                else
+                    System.out.println("Cannot divide by zero");
+                break;
+
+            default:
+                System.out.println("Receiver: Byee");
+        }
+    }
+
+   public static void main(String[] args) {
+
+    Scanner sc = new Scanner(System.in);
+
+    sender();
+    receiver();
+
+    System.out.print("Enter operation (+, -, *, /): ");
+    char op = sc.next().charAt(0);
+
+    if (op == '+' || op == '-' || op == '*' || op == '/') {
+
+        System.out.print("Enter num1: ");
+        int num1 = sc.nextInt();
+
+        System.out.print("Enter num2: ");
+        int num2 = sc.nextInt();
+
+        operation(op, num1, num2);
+
+    } else {
+        operation(op, 0, 0);
+    }
+
+    sc.close();
+}
+}
